@@ -137,8 +137,11 @@ let resetForm = () => {
 signupBtn.addEventListener('click', (e) => {
   e.preventDefault();
   console.log("Hello signup");
+  localStorage.login = 1;
   containerApp.style.opacity = 0;
   appContainer.style.opacity = 100;
+  containerSignup.style.opacity = 0;
+
   acceptData();
 });
 
@@ -146,7 +149,6 @@ let temp;
 btnlogin.addEventListener('click', function (e) {
   e.preventDefault();
 
-  localStorage.login = 1;
   console.log(localStorage.login);
 
   if (data.find(acc => acc.email === InputEmailL.value)) {
@@ -154,6 +156,7 @@ btnlogin.addEventListener('click', function (e) {
     console.log(temp);
     if ((temp.password) === (InputPswdL.value)) {
       console.log('LogIN');
+      localStorage.login = 1;
       containerApp.style.opacity = 0;
       containerSignup.style.opacity = 0;
       containerLogin.style.opacity = 0;
