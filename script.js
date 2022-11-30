@@ -8,8 +8,11 @@ const btnlogin = document.getElementById('btnLogin');
 const InputEmailL = document.getElementById('LoginEid');
 const InputPswdL = document.getElementById('LoginPswd');
 const containerApp = document.querySelector('.form-structor');
+const containerLogin = document.querySelector('.center');
+const containerSignup = document.querySelector('.signup');
 const appContainer = document.querySelector('.app');
 appContainer.style.opacity = 0;
+containerLogin.style.opacity = 0;
 ////
 
 let form = document.getElementById("form");
@@ -20,7 +23,10 @@ let msg = document.getElementById("msg");
 let tasks = document.getElementById("tasks");
 let add = document.getElementById("add");
 let btnlogout = document.getElementById("logout");
+let btnLogin2 = document.getElementById("btnLogin2");
+//let login;
 let data = [{}];
+
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -100,11 +106,28 @@ let resetForm = () => {
   nameInput.value = "";
   emailInput.value = "";
   pswdInput.value = "";
+  InputNameS.value = "";
+  InputEmailS.value = "";
+  InputPswdS.value= "";
+  InputPswdL.value ="";
+  InputEmailL.value = "";
 };
-//IIFY to display data 
+//IIFE to display data 
 (() => {
   data = JSON.parse(localStorage.getItem("data")) || []
   console.log(data);
+   
+  if(localStorage.login == 1){
+    console.log('already Logged in ');
+      containerApp.style.opacity = 0;
+      containerSignup.style.opacity = 0;
+      containerLogin.style.opacity = 0;
+      appContainer.style.opacity = 100;
+  }
+  else{
+          console.log("Login first");
+  }
+
 
   createTasks();
 })();
@@ -122,12 +145,18 @@ signupBtn.addEventListener('click', (e) => {
 let temp;
 btnlogin.addEventListener('click', function (e) {
   e.preventDefault();
+
+  localStorage.login = 1;
+  console.log(localStorage.login);
+
   if (data.find(acc => acc.email === InputEmailL.value)) {
     temp = data.find(acc => acc.email === InputEmailL.value);
     console.log(temp);
     if ((temp.password) === (InputPswdL.value)) {
       console.log('LogIN');
       containerApp.style.opacity = 0;
+      containerSignup.style.opacity = 0;
+      containerLogin.style.opacity = 0;
       appContainer.style.opacity = 100;
     }
     else {
@@ -141,7 +170,23 @@ btnlogin.addEventListener('click', function (e) {
 
 btnlogout.addEventListener('click',function(e){
   e.preventDefault();
+     localStorage.login = 0;
      containerApp.style.opacity = 100;
      appContainer.style.opacity = 0;
+     containerLogin.style.opacity = 0;
+     containerSignup.style.opacity = 100;
+     InputNameS.value = "";
+     InputEmailS.value = "";
+     InputPswdS.value= "";
+     InputPswdL.value ="";
+     InputEmailL.value = "";
+});
+
+btnLogin2.addEventListener('click',function(e){
+  e.preventDefault();
+  containerApp.style.opacity = 100;
+  appContainer.style.opacity = 0;
+  containerLogin.style.opacity = 100;
+  containerSignup.style.opacity = 0;
 });
 /////
