@@ -108,24 +108,24 @@ let resetForm = () => {
   pswdInput.value = "";
   InputNameS.value = "";
   InputEmailS.value = "";
-  InputPswdS.value= "";
-  InputPswdL.value ="";
+  InputPswdS.value = "";
+  InputPswdL.value = "";
   InputEmailL.value = "";
 };
 //IIFE to display data 
 (() => {
   data = JSON.parse(localStorage.getItem("data")) || []
   console.log(data);
-   
-  if(localStorage.login == 1){
+
+  if (localStorage.login == 1) {
     console.log('already Logged in ');
-      containerApp.style.opacity = 0;
-      containerSignup.style.opacity = 0;
-      containerLogin.style.opacity = 0;
-      appContainer.style.opacity = 100;
+    containerApp.style.opacity = 0;
+    containerSignup.style.opacity = 0;
+    containerLogin.style.opacity = 0;
+    appContainer.style.opacity = 100;
   }
-  else{
-          console.log("Login first");
+  else {
+    console.log("Login first");
   }
 
 
@@ -171,21 +171,21 @@ btnlogin.addEventListener('click', function (e) {
   }
 });
 
-btnlogout.addEventListener('click',function(e){
+btnlogout.addEventListener('click', function (e) {
   e.preventDefault();
-     localStorage.login = 0;
-     containerApp.style.opacity = 100;
-     appContainer.style.opacity = 0;
-     containerLogin.style.opacity = 0;
-     containerSignup.style.opacity = 100;
-     InputNameS.value = "";
-     InputEmailS.value = "";
-     InputPswdS.value= "";
-     InputPswdL.value ="";
-     InputEmailL.value = "";
+  localStorage.login = 0;
+  containerApp.style.opacity = 100;
+  appContainer.style.opacity = 0;
+  containerLogin.style.opacity = 0;
+  containerSignup.style.opacity = 100;
+  InputNameS.value = "";
+  InputEmailS.value = "";
+  InputPswdS.value = "";
+  InputPswdL.value = "";
+  InputEmailL.value = "";
 });
 
-btnLogin2.addEventListener('click',function(e){
+btnLogin2.addEventListener('click', function (e) {
   e.preventDefault();
   containerApp.style.opacity = 100;
   appContainer.style.opacity = 0;
